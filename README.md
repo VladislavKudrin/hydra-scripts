@@ -61,7 +61,7 @@ You can also add credentials manually to the:
 ### Preprod:
 
 1. Change env file if needed, define `CARDANO_NODE_SOCKET_PATH`, `HNODEBIN` if not defined
-2. Run `generate-credentials.sh --node-id vlad --add-peer 127.0.0.1:5001:4001`
+2. Run `generate-credentials.sh --node-id vlad --add-peer 127.0.0.1:5001:127.0.0.1:4001`
 3. [Fund](https://docs.cardano.org/cardano-testnets/tools/faucet) the address in **_data/vlad/vlad-node.addr_**
 4. If you want to add more peers: repeat steps 2 - 3 **(diffetent ports, hosts and node-ids)** until you are satisfied
 5. Run `hydra-node.sh --node-id vlad`
@@ -71,7 +71,7 @@ You can also add credentials manually to the:
 
 1. Change env file if needed, define `CARDANO_NODE_SOCKET_PATH`, `HNODEBIN` if not defined
 2. Don't forget to change `--testnet-magic` in the env file to your number
-3. Run `generate-credentials.sh --node-id vlad --add-peer 127.0.0.1:5001:4001`
+3. Run `generate-credentials.sh --node-id vlad --add-peer 127.0.0.1:5001:127.0.0.1:4001`
 4. Fund the address in **_data/vlad/vlad-node.addr_**
 5. If you want to add more peers: repeat steps 3 - 4 **(diffetent ports, hosts and node-ids)** until you are satisfied
 6. Run `publish-reference-scripts.sh --node-id vlad`
