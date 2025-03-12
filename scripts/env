@@ -1,0 +1,25 @@
+#########################################
+# Default Variables - Change as desired #
+# Make sure they are defined            #
+#########################################
+
+HYDRA_NODE_VERSION=0.20.0
+NETWORK_FLAG="--testnet-magic 42"
+HNODE_HOST=0.0.0.0
+HNODE_PORT=5001
+HNODE_API_HOST=0.0.0.0
+HNODE_API_PORT=4001
+
+CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH
+HNODEBIN=$HNODEBIN
+
+#########################################################################
+# Data folder variables (keys, persistence, protocol-parameters, peers) #
+# Change if you know what you are doing                                 #
+#########################################################################
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # dir of this file
+SOURCE_DIR="$( dirname "${SCRIPT_DIR}")"
+DATA_DIR="${SOURCE_DIR}/data" # dir of data files (credentials, persistence)
+CREDENTIALS_DIR="${DATA_DIR}/credentials"
+mkdir -p "$CREDENTIALS_DIR"
