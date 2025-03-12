@@ -29,6 +29,9 @@ Main script for creating the hydra node. It will fetch protocol parameters, if n
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `--node-id <node-id>`                   | Node Id                                                                                                   |
 | `--testnet-magic <number> or --mainnet` | Choose the network magic                                                                                  |
+| `--zero-fees`                           | Set fees to zero in the head                                                                              |
+| `-d, --deploy-systemd`                  | Deploy as systemd                                                                                         |
+| `-s, --stop-node`                       | Stop the service                                                                                          |
 | all other paramters from hydra-node     | You can pass parameters defined in the [official documentation](https://github.com/cardano-scaling/hydra) |
 
 ### 2. _publish-reference-scripts.sh_
