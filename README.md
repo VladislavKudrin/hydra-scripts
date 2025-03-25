@@ -29,6 +29,8 @@ Main script for creating the hydra node. It will fetch protocol parameters, if n
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `--node-id <node-id>`                   | Node Id                                                                                                   |
 | `--testnet-magic <number> or --mainnet` | Choose the network magic                                                                                  |
+| `--deposit-deadline <number>`           | Deposit deadline for incemental commits                                                                   |
+| `-s, --stop-node`                       | Stop the service                                                                                          |
 | `--zero-fees`                           | Set fees to zero in the head                                                                              |
 | `-d, --deploy-systemd`                  | Deploy as systemd                                                                                         |
 | `-s, --stop-node`                       | Stop the service                                                                                          |
@@ -53,11 +55,12 @@ You can also add credentials manually to the:
 
 - _data/credentials/{node-id}/{node-id}-{hydra, node}.{sk, vk}_
 
-| Parameter                                             | Description                            |
-| ----------------------------------------------------- | -------------------------------------- |
-| `--node-id <node-id>`                                 | Node Id                                |
-| `--add-peer <host>:<node-port>:<api-host>:<api-port>` | Adding credentials to **_peers.json_** |
-| `--testnet-magic <number> or --mainnet`               | Choose the network magic               |
+| Parameter                                             | Description                                  |
+| ----------------------------------------------------- | -------------------------------------------- |
+| `--node-id <node-id>`                                 | Node Id                                      |
+| `--generate-wallet`                                   | Generate wallet (funds account) for the node |
+| `--add-peer <host>:<node-port>:<api-host>:<api-port>` | Adding credentials to **_peers.json_**       |
+| `--testnet-magic <number> or --mainnet`               | Choose the network magic                     |
 
 ## Example usage:
 
@@ -86,4 +89,4 @@ You can also add credentials manually to the:
 1. [Why peers cant be added on the fly (yet)](https://github.com/cardano-scaling/hydra/issues/240)
 2. [Blockfrost for hydra (WIP)](https://github.com/cardano-scaling/hydra/issues/1305)
 3. [MeshJs SDK for hydra](https://meshjs.dev/providers/hydra)
-4. [Why multiple heads per node are not available (yet)](https://github.com/cardano-scaling/hydra/issues/383):
+4. [Why multiple heads per node are not available (yet)](https://github.com/cardano-scaling/hydra/issues/383)
