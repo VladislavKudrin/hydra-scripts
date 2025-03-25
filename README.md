@@ -90,3 +90,7 @@ You can also add credentials manually to the:
 2. [Blockfrost for hydra (WIP)](https://github.com/cardano-scaling/hydra/issues/1305)
 3. [MeshJs SDK for hydra](https://meshjs.dev/providers/hydra)
 4. [Why multiple heads per node are not available (yet)](https://github.com/cardano-scaling/hydra/issues/383)
+
+## Issues?
+
+### Visit [Wiki](https://github.com/VladislavKudrin/hydra-scripts/wiki/FAQ) - it can solve some common issues
