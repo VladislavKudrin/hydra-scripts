@@ -17,6 +17,10 @@ while [[ "$#" -gt 0 ]]; do
       PEER="$2"
       shift 2
       ;;
+    --generate-wallet)
+      GENERATE_WALLET=1
+      shift 1
+      ;;
     --testnet-magic)
       NETWORK="$2"
       NETWORK_FLAG="--testnet-magic $NETWORK"
@@ -27,7 +31,7 @@ while [[ "$#" -gt 0 ]]; do
       shift 1
       ;;
     --help)
-      echo "Usage: $0 --node-id <node id>"
+      echo "Usage: $0 --node-id <node id> [--testnet-magic <magic>] [--add-peer <host>:<node-port>:<api-host>:<api-port>] [--generate-wallet]"
       exit 0
       ;;
     *)
@@ -56,6 +60,20 @@ if [ ! -f "$CARDANO_SIGNING_KEY" ]; then
   $NETWORK_FLAG
 else
   echo "Cardano signing key exists in ${CREDENTIALS_DIR_NODE}."
+fi
+
+if [ "$GENERATE_WALLET" -eq 1 ]; then
+  echo "Wallet signing key missing in ${CREDENTIALS_DIR_NODE}. Generating Wallet signing key..."
+  cardano-cli address key-gen \
+    --verification-key-file ${CREDENTIALS_DIR_NODE}/${NODE_ID}-wallet.vk \
+    --signing-key-file ${CREDENTIALS_DIR_NODE}/${NODE_ID}-wallet.sk
+  
+  cardano-cli address build \
+  --verification-key-file  ${CREDENTIALS_DIR_NODE}/${NODE_ID}-wallet.vk \
+  --out-file  ${CREDENTIALS_DIR_NODE}/${NODE_ID}-wallet.addr \
+  $NETWORK_FLAG
+else
+  echo "Wallet signing key exists in ${CREDENTIALS_DIR_NODE}."
 fi
 
 if [ ! -f "$HYDRA_SIGNING_KEY" ]; then

@@ -58,6 +58,10 @@ while [[ "$#" -gt 0 ]]; do
       NODE_ID="$2"
       shift 2
       ;;
+    --deposit-deadline)
+      DEPOSIT_DEADLINE="$2"
+      shift 2
+      ;;
     --port)
       HNODE_PORT="$2"
       shift 2
@@ -92,7 +96,7 @@ while [[ "$#" -gt 0 ]]; do
       OTHER_COMMANDS="$@"
       break  ;; 
     --help)
-      echo "Usage: $0 --node-id <node id> [--testnet-magic <magic>] [--port <port>] [--host <host>] [--api-host <api-host>] [--api-port <api-port>] [--mainnet] [-d|--deploy-systemd] [-s|--stop-node]"
+      echo "Usage: $0 --node-id <node id> [--testnet-magic <magic>] [--deposit-deadline <deposit-deadline>] [--port <port>] [--host <host>] [--api-host <api-host>] [--api-port <api-port>] [--mainnet] [-d|--deploy-systemd] [-s|--stop-node]"
       exit 0
       ;;
     *)
@@ -149,7 +153,7 @@ hydra_verification_key_args=()
 LOCAL_HOST=$HNODE_HOST
 LOCAL_PORT=$HNODE_PORT
 LOCAL_API_HOST=$HNODE_API_HOST 
-LOCAL_API_PORT=$HNODE_API_PORT  
+LOCAL_API_PORT=$HNODE_API_PORT
 
 while IFS= read -r peer_json; do
   peer_node_id=$(echo "$peer_json" | jq -r '.["node-id"]')
@@ -195,6 +199,7 @@ exec "${HNODEBIN}" \
   --api-port $LOCAL_API_PORT \
   --host $LOCAL_HOST \
   --port $LOCAL_PORT \
+  --deposit-deadline $DEPOSIT_DEADLINE
   "${peers_args[@]}" \
   "${cardano_verification_key_args[@]}" \
   "${hydra_verification_key_args[@]}" \
